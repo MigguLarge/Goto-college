@@ -1,3 +1,46 @@
+const colleges = {
+    snu: {
+        name: "서울대",
+        lastSubmissionDate: new Date("2024-01-05").toDateString(),
+        moreInfo:
+            "https://admission.snu.ac.kr/webdata/admission/files/2024jungsi.pdf",
+        documentNeeded: "검정고시 합격증, 학생부 대체 서식(1단계 합격자)",
+    },
+    korea: {
+        name: "고려대",
+        lastSubmissionDate: new Date("2024-01-05").toDateString(),
+        moreInfo: "https://oku.korea.ac.kr/oku/cms/FR_CON/index.do?MENU_ID=650",
+        documentNeeded: "검정고시 합격증명서",
+    },
+    yonesei: {
+        name: "연세대",
+        lastSubmissionDate: new Date("2024-01-05").toDateString(),
+        moreInfo:
+            "http://admission.yonsei.ac.kr/seoul/admission/html/regular/guide.asp",
+        documentNeeded: "검정고시 합격증명서",
+    },
+    skku: {
+        name: "성균관대",
+        lastSubmissionDate: new Date("2024-01-06").toDateString(),
+        moreInfo:
+            "https://admission.skku.edu/admission/html/regular/guide.html",
+        documentNeeded: "입학원서, 검정고시 합격증명서",
+    },
+    hanyang: {
+        name: "한양대",
+        lastSubmissionDate: new Date("2024-01-06").toDateString(),
+        moreInfo:
+            "https://go.hanyang.ac.kr/web/mojib/mojib.do?m_year=2024&m_type=JEONGSI",
+        documentNeeded: "검정고시 합격증명서",
+    },
+    konkuk: {
+        name: "건국대",
+        lastSubmissionDate: new Date("2024-01-05").toDateString(),
+        moreInfo:
+            "http://enter.konkuk.ac.kr/submenu.do?menuurl=pNIJTWxI%2b8B8m%2bUBBAchHA%3d%3d&",
+        documentNeeded: "검정고시 합격증명서",
+    },
+};
 class CollegeList extends HTMLElement {
     constructor() {
         super();
@@ -91,20 +134,18 @@ class CollegeDetail extends HTMLElement {
         wrapper.classList.add("wrapper");
 
         const collegeName = document.createElement("span");
-        collegeName.classList.add("college-name");
-
         const collegeLastSubmissionDate = document.createElement("span");
-        collegeLastSubmissionDate.classList.add("college-last-submission-date");
-
+        const documentNeeded = document.createElement("span");
         const collegeDetail = document.createElement("span");
-        collegeDetail.classList.add("college-detail");
-
         const collegeDetailLink = document.createElement("a");
-
-        collegeDetailLink.classList.add("clickable");
-        collegeDetail.appendChild(collegeDetailLink);
-
         const goBack = document.createElement("span");
+
+        collegeName.classList.add("college-name");
+        collegeLastSubmissionDate.classList.add("college-last-submission-date");
+        documentNeeded.classList.add("document-needed");
+        collegeDetail.classList.add("college-detail");
+        collegeDetail.appendChild(collegeDetailLink);
+        collegeDetailLink.classList.add("clickable");
         goBack.classList.add("go-back");
         goBack.classList.add("clickable");
         goBack.setAttribute(
@@ -115,6 +156,7 @@ class CollegeDetail extends HTMLElement {
         collegeName.textContent = "대학 이름: " + collegeJSON.name;
         collegeLastSubmissionDate.textContent =
             "접수 마감일: " + collegeJSON.lastSubmissionDate;
+        documentNeeded.textContent = "필요 서류: " + collegeJSON.documentNeeded;
         collegeDetailLink.textContent = "더 알아보기 (공식 사이트로 이동)";
         collegeDetailLink.href = collegeJSON.moreInfo;
         collegeDetailLink.target = "_blank";
@@ -122,6 +164,7 @@ class CollegeDetail extends HTMLElement {
 
         wrapper.appendChild(collegeName);
         wrapper.appendChild(collegeLastSubmissionDate);
+        wrapper.appendChild(documentNeeded);
         wrapper.appendChild(collegeDetail);
         wrapper.appendChild(goBack);
 
@@ -154,23 +197,6 @@ class CollegeDetail extends HTMLElement {
 customElements.define("college-detail", CollegeDetail);
 
 const container = document.querySelector(".container");
-const colleges = {
-    snu: {
-        name: "서울대학교",
-        lastSubmissionDate: new Date("2024-01-05").toDateString(),
-        moreInfo: "https://admission.snu.ac.kr/undergraduate/regular/guide",
-    },
-    ku: {
-        name: "고려대학교",
-        lastSubmissionDate: new Date("2024-01-05").toDateString(),
-        moreInfo: "https://oku.korea.ac.kr/oku/cms/FR_CON/index.do?MENU_ID=650",
-    },
-	yonesei: {
-		name: "연세대학교",
-        lastSubmissionDate: new Date("2024-01-05").toDateString(),
-		moreInfo: "http://admission.yonsei.ac.kr/seoul/admission/html/regular/guide.asp"
-	}
-};
 
 const renderCollegeList = (collegeList) => {
     return `<college-list colleges='${JSON.stringify(
