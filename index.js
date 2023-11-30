@@ -41,6 +41,7 @@ const colleges = {
         documentNeeded: "검정고시 합격증명서",
     },
 };
+
 class CollegeList extends HTMLElement {
     constructor() {
         super();
@@ -52,15 +53,15 @@ class CollegeList extends HTMLElement {
         const collegesJSON = JSON.parse(colleges);
 
         const list = document.createElement("ul");
-
         const listHeader = document.createElement("li");
         const name = document.createElement("span");
-        name.textContent = "대학 이름";
         const lastSubmissionDate = document.createElement("span");
+
+        name.textContent = "대학 이름";
         lastSubmissionDate.textContent = "접수 마감일";
+
         listHeader.appendChild(name);
         listHeader.appendChild(lastSubmissionDate);
-
         list.appendChild(listHeader);
 
         for (const college in collegesJSON) {
