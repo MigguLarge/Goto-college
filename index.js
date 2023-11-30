@@ -97,6 +97,8 @@ class CollegeList extends HTMLElement {
 			li {
 				display: flex;
 				justify-content: space-between;
+				border-bottom: 1px solid black;
+				padding: .5em 0;
 			}
 
 			li span:first-child {
@@ -158,10 +160,10 @@ class CollegeDetail extends HTMLElement {
         collegeLastSubmissionDate.textContent =
             "접수 마감일: " + collegeJSON.lastSubmissionDate;
         documentNeeded.textContent = "필요 서류: " + collegeJSON.documentNeeded;
-        collegeDetailLink.textContent = "더 알아보기 (공식 사이트로 이동)";
+        collegeDetailLink.textContent = "더 알아보기 → 공식 사이트로 이동";
         collegeDetailLink.href = collegeJSON.moreInfo;
         collegeDetailLink.target = "_blank";
-        goBack.textContent = "돌아가기(대학 목록)";
+        goBack.textContent = "돌아가기 → 대학 목록";
 
         wrapper.appendChild(collegeName);
         wrapper.appendChild(collegeLastSubmissionDate);
@@ -176,6 +178,7 @@ class CollegeDetail extends HTMLElement {
 				flex-direction: column;
 				width: max-content;
 				margin: 0 auto;
+				line-height: 150%;
 			}
 
 			.clickable {
