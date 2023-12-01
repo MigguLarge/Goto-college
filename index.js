@@ -40,6 +40,25 @@ const colleges = {
             "http://enter.konkuk.ac.kr/submenu.do?menuurl=pNIJTWxI%2b8B8m%2bUBBAchHA%3d%3d&",
         documentNeeded: "검정고시 합격증명서",
     },
+    khu: {
+        name: "경희대",
+        lastSubmissionDate: new Date("2024-01-06").toDateString(),
+        moreInfo:
+            "https://kr.object.gov-ncloudstorage.com/khuiphakstorage/upload/20230831041819542_2024%20jungsi%200901.pdf",
+        documentNeeded: "검정고시 합격증명서",
+    },
+	dongguk: {
+		name: "동국대",
+		lastSubmissionDate: new Date("2024-01-06").toDateString(),
+		moreInfo: "https://ipsi.dongguk.edu/upload/file/20231025105945KKX9RT.PDF",
+		documentNeeded: "검정고시 합격증명서"
+	},
+	cau: {
+		name: "중앙대",
+		lastSubmissionDate: new Date("2024-01-06").toDateString(),
+		moreInfo: "https://admission.cau.ac.kr/submenu.do?menuurl=wvOt10B5et6zMa%2fM59G%2bxQ%3d%3d&",
+		documentNeeded: "검정고시 합격증명서"
+	}
 };
 
 class CollegeList extends HTMLElement {
