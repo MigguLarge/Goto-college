@@ -108,6 +108,7 @@ class CollegeList extends HTMLElement {
 
             const collegeName = document.createElement("span");
             listItem.appendChild(collegeName);
+			collegeName.classList.add("college-name");
             collegeName.textContent = collegesJSON[college].name;
 
             const collegeLastSubmissionDate = document.createElement("span");
@@ -118,36 +119,50 @@ class CollegeList extends HTMLElement {
 			const collegeSuccessfulCandidateAnnouncementDate = document.createElement("span");
 			listItem.appendChild(collegeSuccessfulCandidateAnnouncementDate);
 			collegeSuccessfulCandidateAnnouncementDate.textContent = collegesJSON[college].successfulCandidateAnnouncementDate;
-
         }
 
         const style = document.createElement("style");
         style.textContent = `
 			ul {
 				list-style: none;
-				width: max-content;
+				width: 100%;
+				max-width: 500px;
 				margin: 0 auto;
 				padding: 0;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
 			}
 			
 			li {
-				display: grid;
-				grid-template-columns: 1fr 1fr 1fr;
-				border-bottom: 1px solid black;
-				padding: 1rem 0;
+				display: inline-flex;
+				flex-direction: column;
+				padding: 1rem;
 			}
 
-			li span {
-				margin: 0 1rem;
+			ul li:nth-child(n+3) {
+				border-top: 1px solid black;
+			}
+
+			ul li:nth-child(2n+1) {
+				border-right: 1px solid black;
+			}
+
+			.college-name {
+				color: rgb(90, 115, 145);
 			}
 
 			.clickable {
 				cursor: pointer;
 			}
 			
-			.clickable:hover {
-				background-color: rgb(90, 115, 145);
-				color: white;
+			@media (hover: hover) {
+				.clickable:hover {
+					background-color: rgb(90, 115, 145);
+					color: white;
+				}
+				.clickable:hover > * {
+					color: white;
+				}
 			}
 		`;
 
@@ -223,6 +238,7 @@ class CollegeDetail extends HTMLElement {
 				margin: 0 auto;
 				line-height: 150%;
 				list-style: none;
+				padding: 0;
 			}
 
 			li {
@@ -242,14 +258,16 @@ class CollegeDetail extends HTMLElement {
 				cursor: pointer;
 			}
 			
-			.clickable:hover {
-				background-color: rgb(90, 115, 145);
-				color: white;
-			}
+			@media (hover: hover) {
+				.clickable:hover {
+					background-color: rgb(90, 115, 145);
+					color: white;
+				}
 
-			.clickable:hover > * {
-				background-color: rgb(90, 115, 145);
-				color: white;
+				.clickable:hover > * {
+					background-color: rgb(90, 115, 145);
+					color: white;
+				}
 			}
 
 			a {
