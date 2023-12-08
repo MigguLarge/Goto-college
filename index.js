@@ -78,6 +78,10 @@ class CollegeList extends HTMLElement {
 				border-right: 1px solid black;
 			}
 
+			ul li:nth-last-child(-n+2) {
+				border-bottom: 1px solid black;
+			}
+
 			.college-name {
 				color: rgb(90, 115, 145);
 			}
